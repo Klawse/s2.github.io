@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S2 Calculator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .calculator {
+      background-color: white;
+      padding: 20px; /* Adjusted padding for better responsiveness */
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 600px; /* Set max width for better layout on larger screens */
+      margin: 0 auto; /* Center the calculator horizontally */
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Two columns for inputs and labels */
+      grid-gap: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 25px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      grid-column: span 2; /* Button spans both columns */
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Responsive Layout for Smaller Screens */
+    @media screen and (max-width: 600px) {
+      form {
+        grid-template-columns: 1fr; /* One column on smaller screens */
+      }
+
+      button {
+        grid-column: span 1; /* Button takes full width on smaller screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>S2 Calculator</h1>
+
+    <form>
+      <label for="DSP">DSP:</label>
+      <input type="number" id="DSP" required>
+
+      <label for="tdDSP">tdDSP:</label>
+      <input type="number" id="tdDSP" required>
+
+      <label for="VHDL">VHDL:</label>
+      <input type="number" id="VHDL" required>
+
+      <label for="tdVHDL">tdVHDL:</label>
+      <input type="number" id="tdVHDL" required>
+
+      <label for="Asservisement">Asservisement:</label>
+      <input type="number" id="Asservisement" required>
+
+      <label for="tdAsservisement">tdAsservisement:</label>
+      <input type="number" id="tdAsservisement" required>
+
+      <label for="Tas">Tas:</label>
+      <input type="number" id="Tas" required>
+
+      <label for="tdTas">tdTas:</label>
+      <input type="number" id="tdTas" required>
+
+      <label for="APP">APP:</label>
+      <input type="number" id="APP" required>
+
+      <label for="tpAPP">tpAPP:</label>
+      <input type="number" id="tpAPP" required>
+
+      <label for="tpDSP">tpDSP:</label>
+      <input type="number" id="tpDSP" required>
+
+      <label for="tpAsservisement">tpAsservisement:</label>
+      <input type="number" id="tpAsservisement" required>
+
+      <label for="tpVHDL">tpVHDL:</label>
+      <input type="number" id="tpVHDL" required>
+
+      <label for="Energie">Energie:</label>
+      <input type="number" id="Energie" required>
+
+      <label for="Réseau">Réseau:</label>
+      <input type="number" id="Réseau" required>
+
+      <label for="Ethique">Ethique:</label>
+      <input type="number" id="Ethique" required>
+
+      <button type="button" onclick="calculateM1INSTS1()">Calculate</button>
+
+      <label for="MOYM1INSTS1">Result:</label>
+      <input type="text" id="MOYM1INSTS1" readonly>
+    </form>
+
+    <script>
+      function calculateM1INSTS1() {
+      var DSP = parseFloat(document.getElementById("DSP").value);
+      var tdDSP = parseFloat(document.getElementById("tdDSP").value);
+      var VHDL = parseFloat(document.getElementById("VHDL").value);
+      var tdVHDL = parseFloat(document.getElementById("tdVHDL").value);
+      var Asservisement = parseFloat(document.getElementById("Asservisement").value);
+      var tdAsservisement = parseFloat(document.getElementById("tdAsservisement").value);
+      var Tas = parseFloat(document.getElementById("Tas").value);
+      var tdTas = parseFloat(document.getElementById("tdTas").value);
+      var APP = parseFloat(document.getElementById("APP").value);
+      var tpAPP = parseFloat(document.getElementById("tpAPP").value);
+      var tpDSP = parseFloat(document.getElementById("tpDSP").value);
+      var tpAsservisement = parseFloat(document.getElementById("tpAsservisement").value);
+      var tpVHDL = parseFloat(document.getElementById("tpVHDL").value);
+      var Energie = parseFloat(document.getElementById("Energie").value);
+      var Réseau = parseFloat(document.getElementById("Réseau").value);
+      var Ethique = parseFloat(document.getElementById("Ethique").value);
+
+      var MOYM1INSTS1 = (((((DSP * 0.6) + (tdDSP * 0.4)) * 3)
+      + (((VHDL * 0.6) + (tdVHDL * 0.4)) * 2)
+      + (((Asservisement * 0.6) + (tdAsservisement * 0.4)) * 2)
+      + (((Tas * 0.6) + (tdTas * 0.4)) * 2)
+      + (((APP * 0.6) + (tpAPP * 0.4)) * 2)
+      + (tpDSP)
+      + (tpAsservisement)
+      + (tpVHDL)
+      + (Ethique)
+      + (Energie)
+      + (Réseau)) / 17);
+
+      document.getElementById("MOYM1INSTS1").value = MOYM1INSTS1;      }
+    </script>
+  </div>
+</body>
+</html>
